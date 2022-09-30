@@ -12,34 +12,49 @@ def inicio(request):
 
 def clientes(request):
 
-    return render (request,"clientes.html")
+    return render (request,"AppCoder/clientes.html")
 
 def resultado(request):
 
     return render (request,"AppCoder/resultado.html")
 
-def buscardoc(request):
-
-    return render (request,"AppCoder/buscardoc.html")
-
 def buscar(request):
 
-    if request.GET["documento"]:
+    return render (request,"AppCoder/buscar.html")
 
-        busqueda= request.GET["documento"]
-        clientes = Clientes.objects.filter(documento_icontains=busqueda)
+def resultadobus(request):
 
-        return render(request, "resultadobus.html", {"clientes": clientes, "busqueda": busqueda})
-    else:
-        mensaje = "No envio los datos." 
+    return render (request,"AppCoder/resultadobus.html")
     
-    return HttpResponse (mensaje)
 
-def registrou(request):
+
+def resultadobus(request):
+
+
+    if request.POST["documento"]:
+
+        if "documento" in request.POST:
+        
+            busqueda = request.POST["documento"]
+        else:
+            busqueda = False
+
+        nombre = Clientes.objects.filter(documento__iexact=busqueda)
+        
+        return render(request, "AppCoder/resultadobus.html", {"nombre": nombre, "busqueda":busqueda})
+
+    else:
+
+        mensaje = "No enviaste datos"
+    
+    return HttpResponse(mensaje)
+
+
+def registro(request):
 
     if request.method =="POST":
 
-        formulario1= Clienteregistrou(request.POST)
+        formulario1= Clienteregistro(request.POST)
 
         print(formulario1)
 
@@ -51,12 +66,11 @@ def registrou(request):
 
             clientef.save()
 
-            return render (request, "AppCoder/resultado.html")
+            return render (request,"AppCoder/resultado.html")
 
     else: 
-        formulario1= Clienteregistrou()  
 
-    
-    return render (request,"AppCoder/registrou.html", {"formulario1": formulario1})
+        formulario1= Clienteregistro()  
+        return render (request,"AppCoder/registro.html", {"formulario1": formulario1})
 
 

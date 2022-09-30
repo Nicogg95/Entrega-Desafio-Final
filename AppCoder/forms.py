@@ -1,7 +1,7 @@
 from socket import fromshare
 from django import forms
 
-class Clienteregistrou(forms.Form):
+class Clienteregistro(forms.Form):
 
     nombre= forms.CharField()
     apellido= forms.CharField()
