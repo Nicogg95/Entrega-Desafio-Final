@@ -1,0 +1,28 @@
+{% extends 'AppCoder/padre.html' %}
+{% load static %}
+    
+    {% block descripcion %}
+    <br>
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 align-items-center my-5">
+            <div class="col-lg-7">
+                <h1>Bienvenido al buscador</h1>
+                <br>
+                <h3>Aqui podras buscar a un miembro de la comunidad mediante su numero de documento.</h3>
+                <br>
+                    <form action="/AppCoder/resultadobus/" method="POST">{% csrf_token %}
+
+                        <p>Numero de Documento: <Input type="number" name="documento"></Input> 
+                            <input type="submit" class="btn btn-primary" value='Buscar'>
+                        </p>
+                        <br>
+                        <br>
+                    </form></div>
+                <div class="col-lg-5">
+                    <img class="img-fluid rounded mb-4 mb-lg-0" src="{% static 'AppCoder/buscar.png' %}" alt="..." />
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+
