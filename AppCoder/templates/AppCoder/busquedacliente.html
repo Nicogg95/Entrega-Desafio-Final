@@ -1,0 +1,25 @@
+{% extends 'AppCoder/padre.html' %}
+    {% load static %}
+    {% csrf_token %}
+    
+    {% block descripcion %}
+        <br>
+        <h1>Resultados de busqueda segun el documento: {{documento}}</h1>
+            
+            {% if nombre %}
+
+                {% for nombre in nombres %}
+                    
+                    <ul>
+                        <li> Nombre: {{nombre.nombre}} </li>
+                        <li> Documento: {{nombre.documento}} </li>
+                    </ul>
+                {% endfor %}   
+            {% else %} 
+                
+                respuesta: {{respuesta}}
+
+                
+            {% endif %}
+                     
+    {% endblock %}

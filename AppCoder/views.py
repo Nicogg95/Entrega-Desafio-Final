@@ -1,4 +1,3 @@
-from ast import Return
 from django.shortcuts import render
 from django.http import HttpResponse, request
 from AppCoder.models import *
@@ -9,45 +8,44 @@ from AppCoder.forms import *
 def inicio(request):
 
     return render (request,"AppCoder/inicio.html")
+    
 
 def clientes(request):
 
     return render (request,"AppCoder/clientes.html")
 
+
 def resultado(request):
 
     return render (request,"AppCoder/resultado.html")
 
+
+def busquedacliente(request):
+
+    return render (request,"AppCoder/busquedacliente.html")
+
+
 def buscar(request):
 
-    return render (request,"AppCoder/buscar.html")
+    #if  "documento" in request.POST:
+            
+            #documento= request.POST["documento"]
+    #else:
+            #documento = False
 
-def resultadobus(request):
+    if request.GET["documento"]:
 
-    return render (request,"AppCoder/resultadobus.html")
-    
+        documento= request.GET["documento"]
 
+        nombre= Clientes.objects.filter(documentosta__icontains=documento)
 
-def resultadobus(request):
-
-
-    if request.POST["documento"]:
-
-        if "documento" in request.POST:
-        
-            busqueda = request.POST["documento"]
-        else:
-            busqueda = False
-
-        nombre = Clientes.objects.filter(documento__iexact=busqueda)
-        
-        return render(request, "AppCoder/resultadobus.html", {"nombre": nombre, "busqueda":busqueda})
+        return render (request,"AppCoder/busquedacliente.html", {"nombre": nombre, "documento": documento})
 
     else:
+            respuesta= "No envio los datos"
 
-        mensaje = "No enviaste datos"
-    
-    return HttpResponse(mensaje)
+    return render(request, "AppCoder/busquecliente.html", {"respuesta": respuesta})
+
 
 
 def registro(request):
