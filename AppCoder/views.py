@@ -20,31 +20,32 @@ def resultado(request):
     return render (request,"AppCoder/resultado.html")
 
 
-def busquedacliente(request):
-
-    return render (request,"AppCoder/busquedacliente.html")
-
-
 def buscar(request):
 
-    #if  "documento" in request.POST:
-            
-            #documento= request.POST["documento"]
-    #else:
-            #documento = False
+    return render (request,"AppCoder/buscar.html")
 
-    if request.GET["documento"]:
 
-        documento= request.GET["documento"]
+def busquedacliente(request):
 
-        nombre= Clientes.objects.filter(documentosta__icontains=documento)
+    if "doc" in request.GET:
 
-        return render (request,"AppCoder/busquedacliente.html", {"nombre": nombre, "documento": documento})
+        documento = request.GET["doc"]
 
     else:
-            respuesta= "No envio los datos"
 
-    return render(request, "AppCoder/busquecliente.html", {"respuesta": respuesta})
+        documento = False
+
+
+    if documento:
+     
+        nombre= Clientes.objects.filter(documento__icontains=documento)
+
+        return render (request,"AppCoder/busquedacliente.html", {"nombres": nombre,  "documento": documento})
+
+    else:
+            respuesta= "No ingreso ningun caracter o un caracter valido, intente nuevamente"
+
+    return render(request, "AppCoder/busquedacliente.html", {"respuesta": respuesta})
 
 
 

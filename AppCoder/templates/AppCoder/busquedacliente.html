@@ -1,25 +1,56 @@
 {% extends 'AppCoder/padre.html' %}
-    {% load static %}
-    {% csrf_token %}
-    
-    {% block descripcion %}
-        <br>
-        <h1>Resultados de busqueda segun el documento: {{documento}}</h1>
-            
-            {% if nombre %}
+{% load static %}
+{% csrf_token %}
 
-                {% for nombre in nombres %}
+{% block descripcion %}
+    <div class="container px-4 px-lg-7">
+
+        <div class="row gx-4 gx-lg-7  my-5">
+
+            <div class="col-lg-6"> 
+
+                {% if nombres %}
+
+                    <h1>Resultados de busqueda para documento: {{documento}}</h1>
+
+                    <br>
                     
-                    <ul>
-                        <li> Nombre: {{nombre.nombre}} </li>
-                        <li> Documento: {{nombre.documento}} </li>
-                    </ul>
-                {% endfor %}   
-            {% else %} 
-                
-                respuesta: {{respuesta}}
+                    <p>{{nombres|length}} resultado/s encontrado/s. </p>
 
-                
-            {% endif %}
-                     
-    {% endblock %}
+                    {% for nombre in nombres %}
+                            
+                        <ul>
+
+                            <li> Nombre: {{nombre.nombre}} </li>
+
+                            <li> Documento: {{nombre.documento}} </li>
+
+                        </ul>
+
+                        <a class="btn btn-primary" href="{%url 'inicio' %}">Volver a inicio</a>
+
+                    {% endfor %}  
+               
+                {% else %} 
+
+                    <h1>Ups! Algo paso :(</h1>
+
+                    <br>
+
+                    <p>Error: {{respuesta}}</p>
+
+                    <a class="btn btn-primary" href="{%url 'inicio' %}">Volver a inicio</a>
+
+                {% endif %}
+
+            </div> 
+            <div class="col-lg-6">
+
+                <img class="img-fluid rounded mb-8 mb-lg-6" src="{% static 'AppCoder/buscar.png' %}" alt="..." />
+
+            </div>
+        </div>
+
+    </div>
+        
+{% endblock %}

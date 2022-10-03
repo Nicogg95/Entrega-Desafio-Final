@@ -3,21 +3,30 @@
         
         {% block descripcion %}
 
-        <div class="container px-4 px-lg-5">
-            <div class="row gx-4 gx-lg-5 align-items-center my-5">
-                <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0" src="{% static 'AppCoder/comunidad800.jpeg' %}" alt="..." />
+            <div class="container px-4 px-lg-5">
+                
+                <div class="row gx-4 gx-lg-5 align-items-center my-5">
+
+                    <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0" src="{% static 'AppCoder/comunidad800.jpeg' %}" alt="..." /></div>
+                    
+                    <div class="col-lg-5">
+
+                        <h1 class="font-weight-light">Bienvenido a mi pagina.</h1>
+
+                        <br>
+
+                        <p>Aqui podras registrate o buscar algun usuario registrado previamente.</p>
+                        
+                        <br>
+
+                        <p><a class="btn btn-primary" href="{%url 'registro' %}">Registrarse</a>  o  <a class="btn btn-primary" href="{%url 'buscar' %}">Realizar una busqueda</a></p>
+
+                        <br>
+
+                    </div>
+
                 </div>
-                <div class="col-lg-5">
-                    <h1 class="font-weight-light">Bienvenido a mi pagina.</h1>
-                    <p>Aqui podras registrate o buscar algun usuario ya registrado previamente.</p>
-                    <a class="btn btn-primary" href="{%url 'registro' %}">Registrarse</a>
-                    <br>
-                    o
-                    <br>
-                    <a class="btn btn-primary" href="{%url 'buscar' %}">Realizar una busqueda</a>
-                    <br>
-                </div>
+
             </div>
-        </div>
 
         {% endblock %}

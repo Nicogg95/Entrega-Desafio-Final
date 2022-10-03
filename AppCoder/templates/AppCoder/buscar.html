@@ -1,24 +1,25 @@
 {% extends 'AppCoder/padre.html' %}
 {% load static %}
-    
-    {% block descripcion %}
-    <br>
-<div class="container px-4 px-lg-5">
-        <div class="row gx-4 gx-lg-5 align-items-center my-5">
-                <div class="col-lg-5">
-                        <h1>Bienvenido al buscador</h1>
-                        <br>
-                        <h3>Aqui podras buscar a un miembro de la comunidad mediante su numero de documento.</h3>
-                        <br>       
-                
-                        <form action="/AppCoder/buscar/" method="GET">
-                                <p> Documento: <input type= "number" name="documento" id="documento"></input>
-                                                <input type= "submit" value="buscar"></input>
-                                </p>
+
+
+
+{% block descripcion %}
+        <div class="container px-4 px-lg-7">
+                <div class="row gx-4 gx-lg-7  my-5">
+                        <div class="col-lg-6">       
+                                <h1>Bienvenido al buscador</h1>  
                                 <br>
-                                <br>
-                        </form></div>
-                <div class="col-lg-5"><img class="img-fluid rounded mb-4 mb-lg-0" src="{% static 'AppCoder/buscar.png' %}" alt="..." />
+                                <form action="/AppCoder/busquedacliente/" method="GET">
+                                        <h5>Aqui podras buscar a un miembro de la comunidad mediante su numero de documento.</h5>
+                                        <br>
+                                        <p>Documento: <input type="number" name="doc"> </input><input class="btn btn-primary" type="submit" value="Buscar"></input>
+                                        </p> 
+                                </form>
+                        </div>
+                        <div class="col-lg-6">
+                                <img class="img-fluid rounded mb-4 mb-lg-0" src="{% static 'AppCoder/buscar.png' %}" alt="..." />
+                        </div>  
+                </div>
         </div>
-</div>
+        
 {% endblock %}
