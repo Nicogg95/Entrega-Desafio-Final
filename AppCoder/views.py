@@ -38,14 +38,14 @@ def busquedacliente(request):
 
     if documento:
      
-        nombre= Clientes.objects.filter(documento__icontains=documento)
+        nombre= Clientes.objects.filter(documento__iexact=documento)
+        apellido= Clientes.objects.filter(documento__iexact=documento)
 
-        return render (request,"AppCoder/busquedacliente.html", {"nombres": nombre,  "documento": documento})
+        return render (request,"AppCoder/busquedacliente.html", {"nombres": nombre, "apellido": apellido, "documento": documento})
 
     else:
-            respuesta= "No ingreso ningun caracter o un caracter valido, intente nuevamente"
 
-    return render(request, "AppCoder/busquedacliente.html", {"respuesta": respuesta})
+        return render(request, "AppCoder/busquedacliente.html")
 
 
 

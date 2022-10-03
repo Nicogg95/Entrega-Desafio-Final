@@ -22,7 +22,7 @@
                         <ul>
 
                             <li> Nombre: {{nombre.nombre}} </li>
-
+                            <li> Apellido: {{nombre.apellido}} </li>
                             <li> Documento: {{nombre.documento}} </li>
 
                         </ul>
@@ -34,10 +34,17 @@
                 {% else %} 
 
                     <h1>Ups! Algo paso :(</h1>
-
                     <br>
+                    Ocurrio un error en tu busqueda, esto puede deberse a los siguientes motivos:
+                    <br>
+                    <br>
+                    <ul>
 
-                    <p>Error: {{respuesta}}</p>
+                        <li><p>No ingreso el documento correcto</p></li>
+                        <li><p>El usuario no existe.</p></li>
+                        <li><p>No ingreso ningun caracter.</p></li>
+                        <li><p>El/los caracteres ingresados no son validos.</p></li>
+                        <br>
 
                     <a class="btn btn-primary" href="{%url 'inicio' %}">Volver a inicio</a>
 
