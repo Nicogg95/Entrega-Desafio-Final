@@ -8,13 +8,12 @@
                 <div class="col-lg-5"><h1> Formulario de registro: </h1>
                     <br>
                     <form action="" method="POST"> {% csrf_token %}  
+                        
                         <table>
-                
-                        {{datosusuario.as_table}}
-                
+                            {{form.as_p}}
                         </table>
                         <br>
-                        <input type="submit" class= "btn btn-primary" value= 'Enviar'>
+                        <input type="submit" class= "btn btn-primary" value= "Enviar"></input>
                         <br>
                         <br>
                     </form>

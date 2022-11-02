@@ -1,0 +1,40 @@
+{% extends 'AppCoder/padre.html' %}
+{% load static %}
+{% csrf_token %}
+
+{% block descripcion %}
+    <div class="container px-4 px-lg-7">
+
+        <div class="row gx-4 gx-lg-7  my-5">
+
+            <div class="col-lg-6"> 
+
+                
+
+                    <p>Titulo: {{juego.titulo}}</p>
+                    <p>Descripcion: {{juego.descripcion}}</p>
+                    <p>Genero: {{juego.genero}}</p>
+                    <p>Año de salida: {{juego.año_de_salida}}</p>
+                    <p>Tipo de juego: {{juego.tipo_de_juego}}</p>
+
+
+                    <a class="btn btn-primary" href="{% url 'ListaJuego' %}">Volver al catalogo</a>
+                   
+                   
+
+                    <br>
+                    <br>
+                    <br>
+            
+
+
+            </div> 
+            <div class="col-lg-6">
+
+                <img class="img-fluid rounded mb-8 mb-lg-6" src="{% static 'AppCoder/buscar.png' %}" alt="..." />
+
+            </div>
+        </div>
+
+    </div>
+{% endblock %}

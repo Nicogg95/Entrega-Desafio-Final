@@ -1,7 +1,9 @@
 from socket import fromshare
+
 from django import forms
 
-class Clienteregistro(forms.Form):
+
+class Usuariosregistro(forms.Form):
 
     nombre= forms.CharField()
     apellido= forms.CharField()
@@ -11,3 +13,11 @@ class Clienteregistro(forms.Form):
     pais= forms.CharField()
     provincia= forms.CharField()
     localidad= forms.CharField()
+
+class Juegosingreso(forms.Form):
+
+    titulo= forms.CharField(max_length=30) 
+    descripcion= forms.CharField(max_length=70)
+    genero= forms.CharField(max_length=30)
+    año_de_salida= forms.IntegerField()
+    tipo_de_juego= forms.CharField(max_length=60)
