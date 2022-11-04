@@ -9,27 +9,29 @@
 
             <div class="col-lg-6"> 
 
-                {% if nombres %}
+                {% if titulos %}
 
-                    <h1>Resultados de busqueda para documento: {{nombre}}</h1>
+                    <h1>Resultados de busqueda para documento: {{titulo}}</h1>
 
                     <br>
                     
-                    <p>{{nombres|length}} resultado/s encontrado/s. </p>
+                    <p>{{titulos|length}} resultado/s encontrado/s. </p>
 
-                    {% for nombre in nombres %}
+                    {% for titulo in titulos %}
                             
                         <ul>
 
-                            <li> Nombre: {{nombre.nombre}} </li>
-                            <li> Apellido: {{nombre.apellido}} </li>
-                            <li> Documento: {{nombre.documento}} </li>
+                            <li> Nombre: {{titulo.titulos}} </li>
+                            <li> Apellido: {{titulo.descripcion}} </li>
+                            <li> Documento: {{titulo.genero}} </li>
 
                         </ul>
 
-                        <a class="btn btn-primary" href="{%url 'inicio' %}">Volver a inicio</a>
-
                     {% endfor %}  
+
+                    <a class="btn btn-primary" href="{%url 'inicio' %}">Volver a inicio</a>
+                    
+                    <a class="btn btn-primary" href="{%url 'buscar' %}">Buscador</a>
                
                 {% else %} 
 
@@ -40,13 +42,15 @@
                     <br>
                     <ul>
 
-                        <li><p>No ingreso el documento correcto</p></li>
-                        <li><p>El usuario no existe.</p></li>
+                        <li><p>No ingreso el titulo correcto.</p></li>
+                        <li><p>El titulo no existe.</p></li>
                         <li><p>No ingreso ningun caracter.</p></li>
                         <li><p>El/los caracteres ingresados no son validos.</p></li>
                         <br>
 
                     <a class="btn btn-primary" href="{%url 'inicio' %}">Volver a inicio</a>
+
+                    <a class="btn btn-primary" href="{%url 'buscar' %}">Buscador</a>
 
                 {% endif %}
 

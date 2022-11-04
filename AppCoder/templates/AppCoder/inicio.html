@@ -1,6 +1,6 @@
 {% extends 'AppCoder/padre.html' %}
     {% load static %}
-        
+ 
         {% block descripcion %}
 
             <div class="container px-4 px-lg-5">
@@ -10,8 +10,9 @@
                     <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0" src="{% static 'AppCoder/comunidad800.jpeg' %}" alt="..." /></div>
                     
                     <div class="col-lg-5">
-
-                        <h1 class="font-weight-light">Bienvenido a mi pagina.</h1>
+                        
+                        <h1>Bienvenido {{user.nombre}}</h1>
+                        <h1 class="font-weight-light">{{mensaje}}</h1>
 
                         <br>
 

@@ -10,20 +10,22 @@
             <div class="col-lg-6"> 
 
                 
-
-                    <p>Titulo: {{juego.titulo}}</p>
-                    <p>Descripcion: {{juego.descripcion}}</p>
-                    <p>Genero: {{juego.genero}}</p>
-                    <p>Año de salida: {{juego.año_de_salida}}</p>
-                    <p>Tipo de juego: {{juego.tipo_de_juego}}</p>
-
-
+                    <h1>{{juego.titulo}}</h1>
+                    <br>
+                    <br>
+                    <ul>
+                        <p><b>Descripcion: </b>{{juego.descripcion}}</p>
+                        <p><b>Genero: </b>{{juego.genero}}</p>
+                        <p><b>Año de salida: </b>{{juego.año_de_salida}}</p>
+                        <p><b>Tipo de juego: </b>{{juego.tipo_de_juego}}</p>
+                    </ul>
+                    <br>
+                    <br>
                     <a class="btn btn-primary" href="{% url 'ListaJuego' %}">Volver al catalogo</a>
                    
                    
 
-                    <br>
-                    <br>
+                    
                     <br>
             
 

@@ -8,11 +8,10 @@
                 <div class="col-lg-5"><h1> Formulario de registro: </h1>
                     <br>
                     <form action="" method="POST"> {% csrf_token %}  
-                        <table>
+                    
+                        {{formulario.as_p}}
                 
-                        {{datosusuario.as_table}}
-                
-                        </table>
+                        
                         <br>
                         <input type="submit" class= "btn btn-primary" value= 'Enviar'>
                         <br>

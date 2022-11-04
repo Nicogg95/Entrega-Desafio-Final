@@ -8,20 +8,24 @@
         <div class="row gx-4 gx-lg-7  my-5">
 
             <div class="col-lg-6"> 
-
+                
                 {% for juego in object_list %}
+                <br>
+                    <il>
+                        <h4>Titulo:</h4><p>{{juego.titulo}}</p>
+                        <h6>Genero:</h4><p>{{juego.genero}}</p>
+                        <h6>Tipo de juego:</h4><p>{{juego.tipo_de_juego}}</p>
+                    </il>
 
-                    <p>Titulo: {{juego.titulo}}</p>
-                    <p>Genero: {{juego.genero}}</p>
-                    <p>Año de salida: {{juego.año_de_salida}}</p>
-
-
-                    <a class="btn btn-primary" href="{% url 'DetalleJuego' juego.id %}">Ver detalles</a>
-                    <a class="btn btn-primary" href="{% url 'ActualizarJuego' juego.id %}">Actualizar</a>
-                    <a class="btn btn-primary" href="{% url 'EliminarJuego' juego.id %}">Eliminar</a>
+                    <a class="btn btn-primary" style="background-color:black; border-color:black" href="{% url 'DetalleJuego' juego.id %}">Ver detalles</a>
+                    <a class="btn btn-primary" style="background-color:green; border-color:green" href="{% url 'ActualizarJuego' juego.id %}">Actualizar</a>
+                    <a class="btn btn-primary" style="background-color:red; border-color:red" href="{% url 'EliminarJuego' juego.id %}">Eliminar</a>
 
                     <br>
                     <br>
+                    <br>
+                    <img class="img-fluid rounded mb-14 mb-lg-0" src="{% static 'AppCoder/pacman.png' %}" alt="..." />
+
                     <br>
                     <br>
                 {% endfor %}
@@ -33,7 +37,7 @@
             </div> 
             <div class="col-lg-6">
 
-                <img class="img-fluid rounded mb-8 mb-lg-6" src="{% static 'AppCoder/buscar.png' %}" alt="..." />
+                <img class="img-fluid rounded mb-8 mb-lg-10" src="{% static 'AppCoder/buscar.png' %}" alt="..." />
 
             </div>
         </div>

@@ -1,15 +1,101 @@
-from django.http import HttpResponse, request
 from django.shortcuts import render
-from django.urls import reverse
 from AppCoder.forms import *
 from AppCoder.models import *
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
+from django.contrib.auth import login, authenticate
+from django.contrib.auth.mixins import LoginRequiredMixin 
+from django.contrib.auth.forms import AuthenticationForm
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.contrib.auth.decorators import login_required
 
 
-# Create your views here.
+#VISTAS 
 
+def inicioSesion(request):
+
+    if request.method=="POST":
+
+        form= AuthenticationForm(request, data= request.POST)
+
+        if form.is_valid():
+
+            usuario = form.cleaned_data.get("username")
+            contraseña = form.cleaned_data.get("password")
+
+            user = authenticate(username = usuario, password= contraseña)
+
+            if user:
+
+                login(request,user)
+
+                return render (request,"AppCoder/inicio.html", {"mensaje": f"Bienvenido {user}"})
+            
+        else:
+            
+            form = AuthenticationForm()
+            return render (request,"AppCoder/login.html", {"mensaje": "Datos incorrectos. Intente nuevamente.", "formulario": form}) 
+
+    else:
+
+        form = AuthenticationForm()
+
+    return render (request,"AppCoder/login.html", {"formulario": form})
+
+
+#################################################################
+
+"""@login_required
+def agregarAvatar (request):
+    
+    if request.method== "POST":
+
+        form1 = AvatarForm(request.POST, request.FILES)
+
+        if form1.is_valid():
+
+            usuarioActual = User.objects.get(username=request.user)
+
+            avatar = Avatar(usuario=usuarioActual, imagen=form1.cleaned_data["imagen"])
+
+            avatar.save()
+
+            return render(request, "AppCoder/inicio.html")
+
+    else:
+
+        form1 = AvatarForm()
+
+    return render(request, "AppCoder/editarUsuario.html", {"formulario1":form1})"""
+
+
+#################################################################
+
+
+def registro(request):
+
+    if request.method == "POST":
+
+        form = RegistroUsuario(request.POST)
+
+        if form.is_valid():
+
+            username= form.cleaned_data["username"]
+
+            form.save()
+            
+            return render (request,"AppCoder/inicio.html", {"mensaje": "Usuario creado."}) 
+
+    else: 
+
+        form = RegistroUsuario()
+
+    return render (request,"AppCoder/registro.html", {"formulario":form})
+
+
+#################################################################
+
+@login_required
 def inicio(request):
 
     return render (request,"AppCoder/inicio.html")
@@ -25,7 +111,7 @@ def about(request):
 
 #################################################################
 
-
+@login_required
 def usuario(request):
 
     return render (request,"AppCoder/usuario.html")
@@ -41,7 +127,7 @@ def resultado(request):
 
 #################################################################
 
-
+@login_required
 def buscar(request):
 
     return render (request,"AppCoder/buscar.html")
@@ -52,22 +138,23 @@ def buscar(request):
 
 def busquedajuego(request):
 
-    if "doc" in request.GET:
 
-        nombre = request.GET["doc"]
+    if "tit" in request.GET:
+
+        titulo = request.GET["tit"]
 
     else:
 
-        nombre = False
+        titulo = False
 
 
-    if nombre:
+    if titulo:
      
-        nombre= Juego.objects.filter(nombre__iexact=nombre)
-        aniosalida= Juego.objects.filter(nombre__iexact=nombre)
-        genero= Juego.objects.filter(nombre__iexact=nombre)
+        titulo= Juego.objects.filter(titulo__iexact=titulo)
+        #año_de_salida= Juego.objects.filter(titulo__iexact=titulo)
+        #genero= Juego.objects.filter(titulo__iexact=titulo)
 
-        return render (request,"AppCoder/busquedaJuego.html", {"nombres": nombre, "añosalida": aniosalida, "genero": genero})
+        return render (request,"AppCoder/busquedaJuego.html", {"titulos": titulo})
 
     else:
 
@@ -76,7 +163,49 @@ def busquedajuego(request):
     
 #################################################################
     
+@login_required
+def editarUsuario(request):
 
+    usuario= request.user
+
+    if request.method == "POST":
+
+        form= FormularioEditar(request.POST)
+        form1 = AvatarForm(request.POST, request.FILES)
+
+        if form.is_valid() and form1.is_valid():
+
+            info = form.cleaned_data
+
+            usuario.email= info ["email"]
+            usuario.set_password(info["password1"])
+            usuario.first_name=info["first_name"]
+            usuario.last_name=info["last_name"]
+
+            usuario.save()
+
+            usuarioActual = User.objects.get(username=request.user)
+            avatar = Avatar(usuario=usuarioActual, imagen=form1.cleaned_data["imagen"])
+            avatar.save()
+
+        return render (request, "AppCoder/inicio.html")
+        
+    else: 
+        
+        form= FormularioEditar(initial={
+            "email": usuario.email,
+            "first_name": usuario.first_name, 
+            "last_name": usuario.last_name,})
+        
+        form1 = AvatarForm()
+    
+        contexto=  {"formulario": form, "formulario1":form1, "usuario": usuario}
+
+    return render (request, "AppCoder/editarUsuario.html", contexto)
+
+#################################################################
+
+"""
 def registro(request):
 
     if request.method =="POST":
@@ -100,7 +229,7 @@ def registro(request):
         datosusuario= Usuariosregistro()  
         contexto=  {"datosusuario": datosusuario}
         return render (request,"AppCoder/registro.html",contexto)
-
+"""
     
 #################################################################
     
@@ -116,7 +245,7 @@ def catalogo(request):
 
 #################################################################
 
-
+@login_required
 def juegoIngreso(request):
 
     if request.method =="POST":
@@ -143,7 +272,7 @@ def juegoIngreso(request):
 
 #################################################################
     
-
+@login_required
 def actualizarJuego(request, tituloJuego):
 
     juegof = Juego.objects.get(titulo=tituloJuego)
@@ -182,7 +311,7 @@ def actualizarJuego(request, tituloJuego):
         
 #################################################################
         
-
+@login_required
 def eliminarJuego(request, tituloJuego):
 
     juego= Juego.objects.get(titulo=tituloJuego)
@@ -198,32 +327,35 @@ def eliminarJuego(request, tituloJuego):
 #################################################################
 
 
-class ListaJuego(ListView):
+#VISTAS EN CLASES
+
+
+class ListaJuego(LoginRequiredMixin, ListView):
     
     model= Juego
 
 
-class DetalleJuego(DetailView):
+class DetalleJuego(LoginRequiredMixin, DetailView):
 
     model= Juego
 
-class CrearJuego(CreateView):
+    
+class CrearJuego(LoginRequiredMixin, CreateView):
 
     model= Juego
-    sucess_url = "/AppCoder/juego/list"
+    success_url = "/AppCoder/juego/list"
     fields = ["titulo", "descripcion", "genero", "año_de_salida", "tipo_de_juego"]
 
       
-class ActualizarJuego(UpdateView):
+class ActualizarJuego(LoginRequiredMixin, UpdateView):
 
     model= Juego
-    sucess_url = "/AppCoder/juego/list"
+    success_url = "/AppCoder/juego/list"
     fields = ["titulo", "descripcion", "genero", "año_de_salida", "tipo_de_juego"]
 
 
-class EliminarJuego(DeleteView):
+class EliminarJuego(LoginRequiredMixin, DeleteView):
 
     model= Juego
-    sucess_url = "/AppCoder/juego/list"
-    fields = ["titulo", "descripcion"]
+    success_url = "/AppCoder/juego/list"
 

@@ -1,0 +1,28 @@
+{% extends 'AppCoder/padre.html' %}
+{% load static %}
+
+
+{% block descripcion %}
+<div class="row gx-4 gx-lg-5 align-items-center my-5">
+    <div class="col-lg-5">
+        <br>
+        <br>
+        <h1> Bienvenido a ZonaVicio </h1>
+        <br>
+        <br>
+        <form action:"" method="POST"> {% csrf_token %}
+            <strong style="color:red">{{mensaje}}</strong>
+            <br>
+            <br>
+            {{formulario.as_p}}
+            <br>
+            <button class= "btn btn-primary align-items-center" type="submit">Iniciar sesion</button>
+        </form>
+    </div>
+    <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0" src="{% static 'AppCoder/comunidad800.jpeg' %}" alt="..." /></div>
+        <br>
+        <br>
+</div>
+
+        
+{% endblock %}
