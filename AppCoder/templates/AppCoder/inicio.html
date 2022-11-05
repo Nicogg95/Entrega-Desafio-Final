@@ -7,22 +7,18 @@
                 
                 <div class="row gx-4 gx-lg-5 align-items-center my-5">
 
-                    <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0" src="{% static 'AppCoder/comunidad800.jpeg' %}" alt="..." /></div>
+                    <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0" src="{% static 'AppCoder/crash.png' %}" alt="..." /></div>
                     
                     <div class="col-lg-5">
                         
-                        <h1>Bienvenido {{user.nombre}}</h1>
-                        <h1 class="font-weight-light">{{mensaje}}</h1>
-
-                        <br>
-
-                        <p>Aqui podras registrate o buscar algun usuario registrado previamente.</p>
                         
-                        <br>
-
-                        <p><a class="btn btn-primary" href="{%url 'registro' %}">Registrarse</a>  o  <a class="btn btn-primary" href="{%url 'buscar' %}">Realizar una busqueda</a></p>
+                        <h1 class="font-weight-light">Bienvenido {{usuario}}</h1>
 
                         <br>
+
+                        <p>Aqui podras registrate, inicio sesion y editar tu usuario (tanto informacion como tu avatar).Tambien podras ver juegos, elimnarlos, editarlos o agregar uno nuevo en la seccion del catalogo. En el menu de la esquina superior derecha podras encontrar las opciones a escoger segun lo que desees hacer.</p>
+                        
+                        <br>                    
 
                     </div>
 

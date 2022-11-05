@@ -29,7 +29,7 @@ def inicioSesion(request):
 
                 login(request,user)
 
-                return render (request,"AppCoder/inicio.html", {"mensaje": f"Bienvenido {user}"})
+                return render (request,"AppCoder/inicio.html", {"usuario": user})
             
         else:
             
@@ -45,7 +45,7 @@ def inicioSesion(request):
 
 #################################################################
 
-"""@login_required
+@login_required
 def agregarAvatar (request):
     
     if request.method== "POST":
@@ -66,7 +66,7 @@ def agregarAvatar (request):
 
         form1 = AvatarForm()
 
-    return render(request, "AppCoder/editarUsuario.html", {"formulario1":form1})"""
+    return render(request, "AppCoder/agregarAvatar.html", {"formulario1":form1})
 
 
 #################################################################
@@ -84,7 +84,7 @@ def registro(request):
 
             form.save()
             
-            return render (request,"AppCoder/inicio.html", {"mensaje": "Usuario creado."}) 
+            return render (request,"AppCoder/resultado.html", {"mensaje": "Usuario creado."}) 
 
     else: 
 
@@ -150,11 +150,11 @@ def busquedajuego(request):
 
     if titulo:
      
-        titulo= Juego.objects.filter(titulo__iexact=titulo)
+        titulo= Juego.objects.filter(titulo__icontains=titulo)
         #año_de_salida= Juego.objects.filter(titulo__iexact=titulo)
         #genero= Juego.objects.filter(titulo__iexact=titulo)
 
-        return render (request,"AppCoder/busquedaJuego.html", {"titulos": titulo})
+        return render (request,"AppCoder/busquedaJuego.html", {"titulo": titulo})
 
     else:
 
@@ -171,22 +171,23 @@ def editarUsuario(request):
     if request.method == "POST":
 
         form= FormularioEditar(request.POST)
-        form1 = AvatarForm(request.POST, request.FILES)
+        #form1 = AvatarForm(request.POST, request.FILES)
 
-        if form.is_valid() and form1.is_valid():
+        #if form.is_valid() and form1.is_valid():
+        if form.is_valid():
 
             info = form.cleaned_data
 
             usuario.email= info ["email"]
-            usuario.set_password(info["password1"])
-            usuario.first_name=info["first_name"]
-            usuario.last_name=info["last_name"]
+            usuario.set_password (info["password1"])
+            usuario.first_name= info ["first_name"]
+            usuario.last_name= info ["last_name"]
 
             usuario.save()
 
-            usuarioActual = User.objects.get(username=request.user)
-            avatar = Avatar(usuario=usuarioActual, imagen=form1.cleaned_data["imagen"])
-            avatar.save()
+            #usuarioActual = User.objects.get(username=request.user)
+            #avatar = Avatar(usuario=usuarioActual, imagen=form1.cleaned_data["imagen"])
+            #avatar.save()
 
         return render (request, "AppCoder/inicio.html")
         
@@ -197,9 +198,10 @@ def editarUsuario(request):
             "first_name": usuario.first_name, 
             "last_name": usuario.last_name,})
         
-        form1 = AvatarForm()
+        #form1 = AvatarForm()
     
-        contexto=  {"formulario": form, "formulario1":form1, "usuario": usuario}
+        #contexto=  {"formulario": form, "formulario1":form1, "usuario": usuario}
+        contexto=  {"formulario": form, "usuario": usuario}
 
     return render (request, "AppCoder/editarUsuario.html", contexto)
 

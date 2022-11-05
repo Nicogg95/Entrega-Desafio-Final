@@ -9,26 +9,28 @@
 
             <div class="col-lg-6"> 
 
-                {% if titulos %}
+                {% if titulo %}
 
-                    <h1>Resultados de busqueda para documento: {{titulo}}</h1>
+                    <h1>Resultados de busqueda: </h1>
 
                     <br>
                     
-                    <p>{{titulos|length}} resultado/s encontrado/s. </p>
-
-                    {% for titulo in titulos %}
+                    <strong>{{titulo|length}} resultado/s encontrado/s. </strong>
+                    <br>
+                    <br>
+                    {% for titulo in titulo %}
                             
                         <ul>
 
-                            <li> Nombre: {{titulo.titulos}} </li>
-                            <li> Apellido: {{titulo.descripcion}} </li>
-                            <li> Documento: {{titulo.genero}} </li>
+                            <li> Titulo: {{titulo.titulo}} </li>
+                            <li> Descripcion: {{titulo.descripcion}} </li>
+                            <li> Genero: {{titulo.genero}} </li>
 
                         </ul>
 
                     {% endfor %}  
-
+                    <br>
+                    <br>
                     <a class="btn btn-primary" href="{%url 'inicio' %}">Volver a inicio</a>
                     
                     <a class="btn btn-primary" href="{%url 'buscar' %}">Buscador</a>
