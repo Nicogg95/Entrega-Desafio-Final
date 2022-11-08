@@ -56,7 +56,7 @@ ROOT_URLCONF = 'ProyectoFP.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ["C:/Users/niko-/Desktop/Proyecto FP/ProyectoFP/AppCoder/template/"],
+        'DIRS': ["C:/Users/niko-/Desktop/Proyecto FP/ProyectoFP/AppCoder/template/AppCoder/"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -128,8 +128,8 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-MEDIA_URL = '/caratulas/'
+MEDIA_URL = '/media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-LOGIN_URL= 'AppReseñas/login'
+LOGIN_URL= '/AppCoder/login'

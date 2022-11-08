@@ -7,13 +7,14 @@
             <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0" src="{% static 'AppCoder/Form-1.jpg' %}" alt="..." /></div>
                 <div class="col-lg-5"><h1> Formulario de registro: </h1>
                     <br>
-                    <form action="" method="POST"> {% csrf_token %}  
+                    <form action="" enctype="multipart/form-data" method="POST"> {% csrf_token %}  
                         
                         <table>
                             {{form.as_p}}
                         </table>
                         <br>
-                        <input type="submit" class= "btn btn-primary" value= "Enviar"></input>
+                        <input type="submit" class= "btn btn-primary" value= "Enviar"></input>   
+                        <a class="btn btn-primary" style="background-color:black;  border-color:black" href="{% url 'ListaJuego' %}">Volver al catalogo</a>
                         <br>
                         <br>
                     </form>

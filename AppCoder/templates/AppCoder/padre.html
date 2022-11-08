@@ -30,12 +30,6 @@
                         <li class="nav-item"><a class="nav-link active" href="{% url 'buscar' %}">Buscador</a></li>
                         <li class="nav-item"><a class="nav-link active" href="{% url 'logout' %}">Cerrar sesion</a></li>
                         
-                            {% with first_image=user.avatar_set.first %}
-                                {% if first_image %}
-                                    <a href= "{{ first_image.imagen.url }}" target="_blank">
-                                    <img src= "{{ first_image.imagen.url }}" class="" style="max-width: 50px">
-                                {% endif %}
-                            {% endwith %}
 
                         {% else %}
 

@@ -13,15 +13,20 @@
                     <h1>{{juego.titulo}}</h1>
                     <br>
                     <br>
+                    <img src="{{juego.caratula.url}}" alt="imagen" width="600" height="350">
+                    <br>
+                    <br>
                     <ul>
                         <p><b>Descripcion: </b>{{juego.descripcion}}</p>
                         <p><b>Genero: </b>{{juego.genero}}</p>
-                        <p><b>Año de salida: </b>{{juego.año_de_salida}}</p>
+                        <p><b>Fecha de estreno: </b>{{juego.fecha_de_estreno}}</p>
                         <p><b>Tipo de juego: </b>{{juego.tipo_de_juego}}</p>
                     </ul>
                     <br>
                     <br>
-                    <a class="btn btn-primary" href="{% url 'ListaJuego' %}">Volver al catalogo</a>
+                    <a class="btn btn-primary" style="background-color:black; border-color:black" href="{% url 'ListaJuego' %}">Volver al catalogo</a>
+                    <a class="btn btn-primary" style="background-color:green; border-color:green" href="{% url 'ActualizarJuego' juego.id %}">Actualizar</a>
+                    <a class="btn btn-primary" style="background-color:red; border-color:red" href="{% url 'EliminarJuego' juego.id %}">Eliminar</a>
                    
                    
 

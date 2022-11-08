@@ -6,9 +6,10 @@
         <div class="row gx-4 gx-lg-5 align-items-center my-5">
                 
                     <form action="" method="POST"> {% csrf_token %}  
-                        <h3>¿Esta seguro que desea eliminar este juego?</h3>
+                        <h3>¿Esta seguro de que desea eliminar este juego?</h3>
                         <br>
-                        <input type="submit" class= "btn btn-primary" value= "Confirmar">
+                        <input type="submit" class= "btn btn-primary" style="background-color:red; border-color:red" value= "Confirmar"></input>
+                        <button type="submit" class= "btn btn-primary" style="background-color:blue; border-color:blue">Cancelar</button>
                         <br>
                         <br>
                     </form>

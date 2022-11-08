@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from AppCoder.models import Avatar
+from AppCoder.models import Juego
 
 
 class Usuariosregistro(forms.Form):
@@ -15,14 +15,15 @@ class Usuariosregistro(forms.Form):
     provincia= forms.CharField()
     localidad= forms.CharField()
 
-class Juegosingreso(forms.Form):
+    
+class Juegosingreso(forms.ModelForm):
 
-    titulo= forms.CharField(max_length=30) 
-    descripcion= forms.CharField(max_length=300)
-    genero= forms.CharField(max_length=30)
-    año_de_salida= forms.IntegerField()
-    tipo_de_juego= forms.CharField(max_length=60)
+    class Meta:
+        
+        model= Juego
+        fields=  ["titulo", "descripcion", "genero", "fecha_de_estreno", "tipo_de_juego", "caratula"]
 
+        
 class RegistroUsuario(UserCreationForm):
 
     email= forms.EmailField()
@@ -34,6 +35,7 @@ class RegistroUsuario(UserCreationForm):
         model = User
         fields = ["username", "email", "first_name", "last_name", "password1", "password2"]
 
+        
 class FormularioEditar(UserCreationForm):
 
     
@@ -45,11 +47,3 @@ class FormularioEditar(UserCreationForm):
 
         model = User
         fields = ["email", "first_name", "last_name", "password1", "password2"] 
-
-
-class AvatarForm(forms.ModelForm):
-
-    class Meta:
-
-        model = Avatar
-        fields = ["imagen"]
