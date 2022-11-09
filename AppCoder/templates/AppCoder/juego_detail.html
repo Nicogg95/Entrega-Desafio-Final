@@ -2,7 +2,7 @@
 {% load static %}
 {% csrf_token %}
 
-{% block descripcion %}
+{% block body %}
     <div class="container px-4 px-lg-7">
 
         <div class="row gx-4 gx-lg-7  my-5">
@@ -10,18 +10,16 @@
             <div class="col-lg-6"> 
 
                 
-                    <h1>{{juego.titulo}}</h1>
+                    <h1><strong><u>{{juego.titulo}}</u></strong></h1>
                     <br>
                     <br>
                     <img src="{{juego.caratula.url}}" alt="imagen" width="600" height="350">
                     <br>
                     <br>
-                    <ul>
-                        <p><b>Descripcion: </b>{{juego.descripcion}}</p>
-                        <p><b>Genero: </b>{{juego.genero}}</p>
-                        <p><b>Fecha de estreno: </b>{{juego.fecha_de_estreno}}</p>
-                        <p><b>Tipo de juego: </b>{{juego.tipo_de_juego}}</p>
-                    </ul>
+                    <li><b>Descripcion: </b>{{juego.descripcion}}</li>
+                    <li><b>Genero: </b>{{juego.genero}}</li>
+                    <li><b>Fecha de estreno: </b>{{juego.fecha_de_estreno}}</li>
+                    <li><b>Tipo de juego: </b>{{juego.tipo_de_juego}}</li>
                     <br>
                     <br>
                     <a class="btn btn-primary" style="background-color:black; border-color:black" href="{% url 'ListaJuego' %}">Volver al catalogo</a>

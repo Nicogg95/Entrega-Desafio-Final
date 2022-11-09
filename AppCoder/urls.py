@@ -6,7 +6,6 @@ from .urls import *
 
 urlpatterns = [
     path("", views.inicio, name= "inicio"),
-    path("usuario/", views.usuario,name = "usuario"),
     path("registro/", views.registro, name= "registro"),
     path("resultadoregistro/", views.resultadoregistro, name= "resultadoregistro"),
     path("buscar/", views.buscar, name = "buscar"),
@@ -16,13 +15,6 @@ urlpatterns = [
     path("logout/", LogoutView.as_view(template_name="AppCoder/Usuarios/logout.html"), name= "logout"),
     path("editarUsuario/", views.editarUsuario, name = "EditarUsuario"),
 
-    #CRUD
-    #path("catalogo/", views.catalogo, name = "catalogo"),
-    #path("juegoIngreso/", views.juegoIngreso, name= "juegoIngreso"),
-    #path("actualizarJuego/<tituloJuego>",views.actualizarJuego, name= "actualizarJuego"),
-    #path("eliminarJuego/<tituloJuego>",views.eliminarJuego, name= "eliminarJuego"),
-
-  
     #CRUD Clases
 
     path("juego/list/", views.ListaJuego.as_view(), name="ListaJuego"),

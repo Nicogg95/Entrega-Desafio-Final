@@ -1,8 +1,7 @@
 {% extends 'AppCoder/padre.html' %}
 {% load static %}
-{% csrf_token %}
 
-{% block descripcion %}
+{% block body %}
     <div class="container px-4 px-lg-7">
 
         <div class="row gx-4 gx-lg-7  my-5">
@@ -27,6 +26,7 @@
                             <li> Genero: {{titulo.genero}} </li>
 
                         </ul>
+
 
                     {% endfor %}  
                     <br>

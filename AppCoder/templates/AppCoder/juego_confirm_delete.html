@@ -1,15 +1,14 @@
 {% extends 'AppCoder/padre.html' %}
 {% load static %}
     
-    {% block descripcion %}
+    {% block body %}
     <div class="container px-4 px-lg-5 my-4">
         <div class="row gx-4 gx-lg-5 align-items-center my-5">
                 
                     <form action="" method="POST"> {% csrf_token %}  
-                        <h3>¿Esta seguro de que desea eliminar este juego?</h3>
+                        <h3>El juego seleccionado se ha eliminado</h3>
                         <br>
-                        <input type="submit" class= "btn btn-primary" style="background-color:red; border-color:red" value= "Confirmar"></input>
-                        <button type="submit" class= "btn btn-primary" style="background-color:blue; border-color:blue">Cancelar</button>
+                        <input type="submit" class= "btn btn-primary" style="background-color:red; border-color:red" value= "OK"></input>
                         <br>
                         <br>
                     </form>

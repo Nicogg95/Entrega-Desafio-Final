@@ -1,8 +1,7 @@
 {% extends 'AppCoder/padre.html' %}
 {% load static %}
-{% csrf_token %}
 
-{% block descripcion %}
+{% block body %}
     <div class="container px-4 px-lg-7 center">
 
         <div class="row gx-4 gx-lg-7  my-5">
@@ -11,14 +10,14 @@
                 
                 {% for juego in object_list %}
                 <br>
-                    <il>
-                        <h4>Titulo:</h4><p>{{juego.titulo}}</p>
+                    
+                        <h4>Titulo:   <strong><u><i>{{juego.titulo}}</i></u></strong></h4>
+                        <br>
                         <img src="{{juego.caratula.url}}" alt="imagen" width="300" height="175">
                         <br>
                         <br>
-                        <h6>Genero:</h4><p>{{juego.genero}}</p>
-                        <h6>Tipo de juego:</h4><p>{{juego.tipo_de_juego}}</p>
-                    </il>
+                    <li> Genero: {{juego.genero}} </li>
+                    <li> Tipo de juego: {{juego.tipo_de_juego}} </li>
                     <br>
 
                     <a class="btn btn-primary" style="background-color:black; border-color:black" href="{% url 'DetalleJuego' juego.id %}">Ver detalles</a>

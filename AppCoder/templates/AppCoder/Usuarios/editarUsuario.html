@@ -1,7 +1,7 @@
 {% extends 'AppCoder/padre.html' %}
 {% load static %}
     
-    {% block descripcion %}
+    {% block body %}
 
    
     <div class="container px-4 px-lg-5 my-4">
@@ -9,10 +9,8 @@
             <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0" src="{% static 'AppCoder/Form-1.jpg' %}" alt="..." /></div>
                 <div class="col-lg-5"><h1>  En este sector puede editar su usuario. </h1>
                     <br>
-                    <br>
+                    
                     <form action="" method="POST"> {% csrf_token %}  
-                    <H4><strong>Edicion de informacion:</stron></H4>
-                    <br>
                     {{formulario.as_p}}
                     <br>
                     <input type="submit" class= "btn btn-primary" value= "Enviar"></input>   

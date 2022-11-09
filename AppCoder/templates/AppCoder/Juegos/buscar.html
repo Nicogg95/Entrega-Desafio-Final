@@ -2,9 +2,9 @@
 {% load static %}
 
 
+<div class="container px-4 px-lg-7">
 
-{% block descripcion %}
-        <div class="container px-4 px-lg-7">
+        {% block body %}
                 <div class="row gx-4 gx-lg-7  my-5">
                         <div class="col-lg-6">       
                                 <h1>Bienvenido al buscador</h1>  
@@ -20,6 +20,7 @@
                                 <img class="img-fluid rounded mb-4 mb-lg-0" src="{% static 'AppCoder/buscar.png' %}" alt="..." />
                         </div>  
                 </div>
-        </div>
+        {% endblock %} 
+</div>
         
-{% endblock %}
+

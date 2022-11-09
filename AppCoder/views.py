@@ -36,7 +36,7 @@ def registro(request):
 
 #################################################################
 
-#Vista para registrarse 2
+#Vista para mostrarel resultado del registro
 def resultadoregistro(request):
 
     return render (request,"AppCoder/Usuarios/resultado.html")
@@ -91,15 +91,6 @@ def inicio(request):
 def about(request):
 
     return render (request,"AppCoder/about.html")
-
-
-#################################################################
-
-
-@login_required
-def usuario(request):
-
-    return render (request,"AppCoder/usuario.html")
 
 
 #################################################################

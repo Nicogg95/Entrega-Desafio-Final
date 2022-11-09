@@ -1,11 +1,11 @@
 {% extends 'AppCoder/padre.html' %}
 {% load static %}
     
-    {% block descripcion %}
+    {% block body %}
     <div class="container px-4 px-lg-5 my-4">
         <div class="row gx-4 gx-lg-5 align-items-center my-5">
             <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0" src="{% static 'AppCoder/Form-1.jpg' %}" alt="..." /></div>
-                <div class="col-lg-5"><h1> Formulario de registro: </h1>
+                <div class="col-lg-5"><h1> Agregar un juego nuevo: </h1>
                     <br>
                     <form action="" enctype="multipart/form-data" method="POST"> {% csrf_token %}  
                         

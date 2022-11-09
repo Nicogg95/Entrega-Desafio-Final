@@ -2,19 +2,6 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from AppCoder.models import Juego
-
-
-class Usuariosregistro(forms.Form):
-
-    nombre= forms.CharField()
-    apellido= forms.CharField()
-    documento= forms.IntegerField()
-    telefono= forms.IntegerField()
-    email= forms.EmailField()
-    pais= forms.CharField()
-    provincia= forms.CharField()
-    localidad= forms.CharField()
-
     
 class Juegosingreso(forms.ModelForm):
 
